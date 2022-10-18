@@ -1,0 +1,78 @@
+# paths:
+#   - 'migrations/**'
+#   - 'projects/server/**'
+#   - 'projects/core/constants/**'
+#   - 'projects/core/methods/**'
+name: "Bump version"
+on:
+  push:
+    branches:
+      - main
+      - beta
+concurrency: production
+jobs:
+  Patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: "0"
+      # - name: Minor version for each merge
+      #   id: taggerDryRun
+      #   uses: anothrNick/github-tag-action@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     DEFAULT_BUMP: "patch"
+      #     RELEASE_BRANCHES: "master"
+      #     PRERELEASE: true
+      #     WITH_V: true
+      #     DRY_RUN: true
+      # DO MY BUILD HERE
+      # IN CASE OF FAILURE, THE STEP BELOW WILL NOT RUN.
+      - name: Minor version for each merge
+        id: taggerFinal
+        uses: anothrNick/github-tag-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: "patch"
+          RELEASE_BRANCHES: "main"
+          PRERELEASE: true
+          WITH_V: true
+
+      # Version
+      - name: Bump version file
+        id: bump-tag-file
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "version.json"
+          json: '{"version": "${{ steps.taggerFinal.outputs.new_tag }}" }'
+          dir: "./"
+      - name: Commit version to repository
+        uses: stefanzweifel/git-auto-commit-action@v4.13.0
+        with:
+          commit_message: 'build(version): Bump version'
+          file_pattern: version.json
+
+      # Changelog
+      - name: Update Changelog
+        id: changelog
+        uses: AlexxNB/chalogen@master
+        with:
+          title: My project changelog 
+      - name: Print Changelog
+        run: echo "$steps.changelog.outputs.changelog"
+      - name: Commit Changelog to repository
+        uses: stefanzweifel/git-auto-commit-action@v4.13.0
+        with:
+          commit_message: 'docs(changelog): Update changelog'
+          file_pattern: CHANGELOG.md
+
+      # Release
+      - name: Create release
+        uses: actions/create-release@latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.changelog.outputs.changelog }}
