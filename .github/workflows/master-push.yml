@@ -45,7 +45,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fromTag: ${{ steps.taggerFinal.outputs.new_tag }}
-          toTag: ${{ steps.previousTag.outputs.name }}
+          toTag: "v${{ steps.previousTag.outputs.name }}"
       ##
       - name: Commit Changelog to repository
         uses: stefanzweifel/git-auto-commit-action@v4.13.0
