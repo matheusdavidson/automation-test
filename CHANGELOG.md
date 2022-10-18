@@ -4,4 +4,4 @@
 
 ### Other
 
-- Merge branch 'main' of github.com:matheusdavidson/automation-test [`c35936ff`](https://github.com/matheusdavidson/automation-test/commit/c35936ff315c27af873a01150bf48ed176dc29e2)
+- chore(automation) [`69212672`](https://github.com/matheusdavidson/automation-test/commit/69212672f173fceabd1277afdc40a5b31a0c8001)
