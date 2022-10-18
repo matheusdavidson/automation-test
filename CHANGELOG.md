@@ -4,4 +4,4 @@
 
 ### Other
 
-- feat(workflow) [`94a70161`](https://github.com/matheusdavidson/automation-test/commit/94a7016133e5fcf63e376cee4b2908a086235a5f)
+- Merge branch 'main' of github.com:matheusdavidson/automation-test [`c35936ff`](https://github.com/matheusdavidson/automation-test/commit/c35936ff315c27af873a01150bf48ed176dc29e2)
