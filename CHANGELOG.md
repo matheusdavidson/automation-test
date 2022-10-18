@@ -4,4 +4,4 @@
 
 ### Other
 
-- chore(automation) [`7bd2654a`](https://github.com/matheusdavidson/automation-test/commit/7bd2654a2f0af66cf050e9622a786c6f10015b89)
+- chore(automation) [`b9a79c98`](https://github.com/matheusdavidson/automation-test/commit/b9a79c98e7b2b668931941ff384076ec73e5fdca)
