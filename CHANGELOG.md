@@ -8,6 +8,7 @@
 
 ### Documentation
 
+- **changelog:** Update changelog [`b5bbdaed`](https://github.com/matheusdavidson/automation-test/commit/b5bbdaed03a930c072127b269bc75ee26347e300)
 - **changelog:** Update changelog [`b97a95a8`](https://github.com/matheusdavidson/automation-test/commit/b97a95a827093462bacd0fdc742ea2efceabbe31)
 - **changelog:** Update changelog [`e63fbf68`](https://github.com/matheusdavidson/automation-test/commit/e63fbf68894ff3bc7962389c98bc7a1b3c17c528)
 - **changelog:** Update changelog [`8a2b4b18`](https://github.com/matheusdavidson/automation-test/commit/8a2b4b18700c4a6eda00020854b11974cf14bd20)
@@ -20,6 +21,8 @@
 
 ### Other
 
+- chore(test) [`4d117fb9`](https://github.com/matheusdavidson/automation-test/commit/4d117fb92e600454cbf5d6725adf2c4495e93f79)
+- chore(test) [`8ead8a8f`](https://github.com/matheusdavidson/automation-test/commit/8ead8a8f0bed0e57fa9dc19939de5262d45ea10e)
 - chore(test) [`93c6e73b`](https://github.com/matheusdavidson/automation-test/commit/93c6e73bd7b21f965a4aca30f3106a6f26a1a93e)
 - chore(automation) [`95ff4709`](https://github.com/matheusdavidson/automation-test/commit/95ff470956380b773fd7382f8fca627f7985bd77)
 - chore(automation) [`5daf6793`](https://github.com/matheusdavidson/automation-test/commit/5daf6793fad4fb92a2b9dc000d30908df63af4e0)
