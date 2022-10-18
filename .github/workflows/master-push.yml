@@ -27,20 +27,6 @@ jobs:
           PRERELEASE: true
           WITH_V: true
 
-      # Version
-      # - name: Bump version file
-      #   id: bump-tag-file
-      #   uses: jsdaniell/create-json@1.1.2
-      #   with:
-      #     name: "version.json"
-      #     json: '{"version": "${{ steps.taggerFinal.outputs.new_tag }}" }'
-      #     dir: "./"
-      # - name: Commit version to repository
-      #   uses: stefanzweifel/git-auto-commit-action@v4.13.0
-      #   with:
-      #     commit_message: 'build(version): Bump version'
-      #     file_pattern: version.json
-
       # Changelog
       - name: Update Changelog
         id: changelog
@@ -52,6 +38,20 @@ jobs:
         with:
           commit_message: 'docs(changelog): Update changelog'
           file_pattern: CHANGELOG.md
+
+      # Version
+      - name: Bump version file
+        id: bump-tag-file
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "version.json"
+          json: '{"version": "${{ steps.taggerFinal.outputs.new_tag }}" }'
+          dir: "./"
+      - name: Commit version to repository
+        uses: stefanzweifel/git-auto-commit-action@v4.13.0
+        with:
+          commit_message: 'build(version): Bump version'
+          file_pattern: version.json
 
       # Release
       - name: Create release
