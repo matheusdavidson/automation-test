@@ -38,7 +38,7 @@ jobs:
       #     name: "version.json"
       #     json: '{"version": "${{ steps.taggerFinal.outputs.new_tag }}" }'
       #     dir: "./"
-      
+
       - name: Commit version to repository
         uses: stefanzweifel/git-auto-commit-action@v4.13.0
         with:
@@ -75,3 +75,4 @@ jobs:
           tag_name: ${{ steps.taggerFinal.outputs.new_tag }}
           release_name: Release ${{ steps.taggerFinal.outputs.new_tag }}
           body: ${{ steps.changelog.outputs.changelog }} 
+          
