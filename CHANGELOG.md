@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.0 - 2022-10-18
+## unreleased
 
 ### Features
 
@@ -8,6 +8,7 @@
 
 ### Documentation
 
+- **changelog:** Update changelog [`e63fbf68`](https://github.com/matheusdavidson/automation-test/commit/e63fbf68894ff3bc7962389c98bc7a1b3c17c528)
 - **changelog:** Update changelog [`8a2b4b18`](https://github.com/matheusdavidson/automation-test/commit/8a2b4b18700c4a6eda00020854b11974cf14bd20)
 - **changelog:** Update changelog [`8f5f53bc`](https://github.com/matheusdavidson/automation-test/commit/8f5f53bcd7427abc8d850db3bb8be76bd340c501)
 - **changelog:** Update changelog [`73319745`](https://github.com/matheusdavidson/automation-test/commit/73319745882fae177894989d2733ec2f577459ac)
@@ -18,6 +19,7 @@
 
 ### Other
 
+- chore(automation) [`95ff4709`](https://github.com/matheusdavidson/automation-test/commit/95ff470956380b773fd7382f8fca627f7985bd77)
 - chore(automation) [`5daf6793`](https://github.com/matheusdavidson/automation-test/commit/5daf6793fad4fb92a2b9dc000d30908df63af4e0)
 - chore(test) [`047bae12`](https://github.com/matheusdavidson/automation-test/commit/047bae129f2022eff110aa287f8f9948c1ecb076)
 - chore(automation) [`b9a79c98`](https://github.com/matheusdavidson/automation-test/commit/b9a79c98e7b2b668931941ff384076ec73e5fdca)
