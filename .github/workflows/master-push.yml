@@ -28,18 +28,23 @@ jobs:
           RELEASE_BRANCHES: "main"
           PRERELEASE: true
           WITH_V: true
-
-      # - uses: actions/checkout@v3
-      #   with:
-      #     fetch-depth: "0"
+      # Get last production tag
+      - name: Get previous tag
+        id: previousTag
+        run: |
+          name=$(git tag --sort=committerdate | grep -E '[0-9]' | tail -1 | cut -b 2-7)
+          echo "previousTag: $name"
+          echo "::set-output name=name::$name"
 
       # Changelog
       - name: Update CHANGELOG
         id: changelog
-        uses: Requarks/changelog-action@v1
+        # uses: Requarks/changelog-action@v1
+        uses: sitepark-com/changelog-action@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ steps.taggerFinal.outputs.new_tag }}
+          fromTag: ${{ steps.taggerFinal.outputs.new_tag }}
+          toTag: ${{ steps.taggerFinal.outputs.name }}
       ##
       - name: Commit Changelog to repository
         uses: stefanzweifel/git-auto-commit-action@v4.13.0
