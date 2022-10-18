@@ -26,6 +26,7 @@ jobs:
           RELEASE_BRANCHES: "main"
           PRERELEASE: true
           WITH_V: true
+          DRY_RUN: true
 
       # Changelog
       - name: Update Changelog
@@ -52,6 +53,16 @@ jobs:
         with:
           commit_message: 'build(version): Bump version'
           file_pattern: version.json
+
+      - name: Minor version for each merge
+        id: taggerFinal2
+        uses: anothrNick/github-tag-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: "minor"
+          RELEASE_BRANCHES: "main"
+          PRERELEASE: true
+          WITH_V: true
 
       # Release
       - name: Create release
