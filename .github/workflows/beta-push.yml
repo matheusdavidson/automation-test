@@ -7,8 +7,8 @@ name: "Bump version"
 on:
   push:
     branches:
-      - main
-concurrency: production
+      - beta
+concurrency: prerelease
 jobs:
   Patch:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
         uses: anothrNick/github-tag-action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: "minor"
+          DEFAULT_BUMP: "patch"
           RELEASE_BRANCHES: "main"
           PRERELEASE: true
           WITH_V: true
@@ -45,14 +45,14 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4.13.0
         with:
           commit_message: 'docs(changelog): Update changelog [skip ci]'
-          file_pattern: CHANGELOG.md
+          file_pattern: CHANGELOG.prerelease.md
 
       # Version
       - name: Bump version file
         id: bump-tag-file
         uses: jsdaniell/create-json@1.1.2
         with:
-          name: "version.json"
+          name: "version-prerelease.json"
           json: '{"version": "${{ steps.taggerFinal.outputs.new_tag }}" }'
           dir: "./"
       ##
@@ -60,7 +60,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4.13.0
         with:
           commit_message: 'build(version): Bump version [skip ci]'
-          file_pattern: version.json
+          file_pattern: version-prerelease.json
 
       # Release
       - name: Create release
