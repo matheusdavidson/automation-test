@@ -54,25 +54,25 @@ jobs:
           file_pattern: version.json
 
       # Changelog
-      - name: Update Changelog
-        id: changelog
-        uses: AlexxNB/chalogen@master
-        with:
-          title: My project changelog 
-      - name: Print Changelog
-        run: echo "${{steps.changelog.outputs.changelog}}"
-      - name: Commit Changelog to repository
-        uses: stefanzweifel/git-auto-commit-action@v4.13.0
-        with:
-          commit_message: 'docs(changelog): Update changelog'
-          file_pattern: CHANGELOG.md
+      # - name: Update Changelog
+      #   id: changelog
+      #   uses: AlexxNB/chalogen@master
+      #   with:
+      #     title: My project changelog 
+      # - name: Print Changelog
+      #   run: echo "${{steps.changelog.outputs.changelog}}"
+      # - name: Commit Changelog to repository
+      #   uses: stefanzweifel/git-auto-commit-action@v4.13.0
+      #   with:
+      #     commit_message: 'docs(changelog): Update changelog'
+      #     file_pattern: CHANGELOG.md
 
-      # Release
-      - name: Create release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: ${{ steps.changelog.outputs.changelog }}
+      # # Release
+      # - name: Create release
+      #   uses: actions/create-release@latest
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release ${{ github.ref }}
+      #     body: ${{ steps.changelog.outputs.changelog }}
