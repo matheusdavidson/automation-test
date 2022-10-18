@@ -17,17 +17,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: "0"
-      - name: Minor version for each merge
-        id: taggerFinal
-        uses: anothrNick/github-tag-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DEFAULT_BUMP: "minor"
-          RELEASE_BRANCHES: "main"
-          PRERELEASE: true
-          WITH_V: true
-          DRY_RUN: true
-
+          
       # Changelog
       - name: Update Changelog
         id: changelog
@@ -40,19 +30,31 @@ jobs:
           commit_message: 'docs(changelog): Update changelog'
           file_pattern: CHANGELOG.md
 
-      # Version
-      - name: Bump version file
-        id: bump-tag-file
-        uses: jsdaniell/create-json@1.1.2
-        with:
-          name: "version.json"
-          json: '{"version": "${{ steps.taggerFinal.outputs.new_tag }}" }'
-          dir: "./"
+      # # Version
+      # - name: Bump version file
+      #   id: bump-tag-file
+      #   uses: jsdaniell/create-json@1.1.2
+      #   with:
+      #     name: "version.json"
+      #     json: '{"version": "${{ steps.taggerFinal.outputs.new_tag }}" }'
+      #     dir: "./"
+      
       - name: Commit version to repository
         uses: stefanzweifel/git-auto-commit-action@v4.13.0
         with:
           commit_message: 'build(version): Bump version'
           file_pattern: version.json
+
+      - name: Minor version for each merge
+        id: taggerFinal
+        uses: anothrNick/github-tag-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: "minor"
+          RELEASE_BRANCHES: "main"
+          PRERELEASE: true
+          WITH_V: true
+          DRY_RUN: true
 
       - name: Minor version for each merge
         id: taggerFinal2
