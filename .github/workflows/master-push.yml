@@ -79,4 +79,3 @@ jobs:
           tag_name: ${{ steps.taggerFinal.outputs.new_tag }}
           release_name: Release ${{ steps.taggerFinal.outputs.new_tag }}
           body: ${{ steps.changelog.outputs.changes }}
-          
